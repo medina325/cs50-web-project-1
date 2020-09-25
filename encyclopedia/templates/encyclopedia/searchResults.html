@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block body %}
+    <h1>Results</h1>
+    <p>The page requested was not found.</p>
+
+    {% if resultsListLength != 0 %}
+        <h1>Did you mean:</h1>
+        <ul>
+            {% for entry in entriesMatch %}
+                <li><a href="{% url 'entrypage' entry %}">{{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

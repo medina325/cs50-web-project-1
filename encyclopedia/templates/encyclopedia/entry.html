@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>Git</h1>
+<p>Git is a version control tool that can be used to keep track of versions of a software project.</p><h2>GitHub</h2>
+<p>GitHub is an online service for hosting git repositories.</p>
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'editpage' title %}">Edit Page</a><br>
+    <a href="{% url 'deletepage' title %}">Delete Page</a>
+{% endblock %}

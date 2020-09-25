@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block body %}
+    <h2>{{ title }} page already exists</h2>
+    <p>
+        There's already a page called {{ title }}. You can edit it by clicking <a href="{% url 'editpage' title %}">here</a>.
+    </p>
+{% endblock %}
