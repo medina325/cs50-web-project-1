@@ -37,6 +37,7 @@ def savePage(request):
         
         if(util.get_entry(title) is not None):
             return render(request, "encyclopedia/errorDisplay.html", {
+                "flag": 1, # Defining flag 1 means the user is trying to save a page that already exists
                 "title": title
             })
         else:
@@ -68,11 +69,15 @@ def editPage(request, title):
     })
 
 def entryPage(request, title):
-    util.md_to_html(util.get_entry(title), title)
-    return render(request, "encyclopedia/entry.html", {
-        "title": title
-    })
-
+    if ((entry := util.get_entry(title)) is not None):
+        util.md_to_html(entry, title)
+        return render(request, "encyclopedia/entry.html", {
+            "title": title
+        })
+    else:
+        return render(request, "encyclopedia/errorDisplay.html", {
+            "flag": 0 # Defining flag 0 means the user tried to look for a non existing page
+        })
 def deletePage(request, title):
     if (util.delete_entry(title)):
         return HttpResponseRedirect(reverse("index"))

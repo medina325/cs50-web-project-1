@@ -5,8 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <h2>{{ title }} page already exists</h2>
-    <p>
-        There's already a page called {{ title }}. You can edit it by clicking <a href="{% url 'editpage' title %}">here</a>.
-    </p>
+    {% if flag %}
+        <h2>{{ title }} page already exists</h2>
+        <p>
+            There's already a page called {{ title }}. You can edit it by clicking <a href="{% url 'editpage' title %}">here</a>.
+        </p>
+    {% else %}
+        <h2>Page does not exist</h2>
+        <p>
+            You can create this page by clicking <a href="{% url 'newpage' %}">here</a>.
+        </p>
+    {% endif %}
+   
 {% endblock %}
