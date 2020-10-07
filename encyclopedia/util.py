@@ -190,6 +190,9 @@ def md_to_html(md_file, title):
             if c == '\n' and (ul_md[k+1] != "-" or ul_md[k+1] != "*"):
                 li_html += "</li>\n"
                 return "<ul>\n" + li_html + "</ul>\n", k
+            elif k+2 == len(ul_md):
+                li_html += c + ul_md[k+1] + "</li>\n"
+                return "<ul>\n" + li_html + "</ul>\n", k+2
             elif c == '\n' and ul_md[k+1] == '-':
                 li_html += "</li>\n\t<li>"
             elif (c == '*' and ul_md[k+1] == '*') or (c == '-' and ul_md[k+1] == '-'):
