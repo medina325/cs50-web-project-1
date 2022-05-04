@@ -45,8 +45,8 @@ In order to run the app, run the following commands in the root directory of the
 
 ```bash
     python -m venv .venv # you can use another virtual environment if you want (e.g.: virtualenv)
-    pip install -r requirements.txt
     source .venv/Scripts/activate # or source .venv/bin/activate for Linux users
+    pip install -r requirements.txt
     python manage.py runserver
 ```
 
